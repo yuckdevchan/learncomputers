@@ -2,7 +2,7 @@
 # What's Artificial Intelligence?
 In the context of computers, artificial intelligence is a general term used to refer to computer software which is able to make 'intelligent' decisions rather than follow a procedural set of instructions.
 
-Since the first public release of OpenAI's ChatGPT in 2022, the term Artificial Intelligence (AI) has been primarily understood to refer to [Large Language Models](/guides/software/artificial-intelligence/llms) (LLMs).
+Since the first public release of OpenAI's ChatGPT in 2022, the term Artificial Intelligence (AI) has been primarily understood to refer to [Large Language Models](llms) (LLMs).
 
 ## Levels of Artificial Intelligence
 ### Artificial Narrow Intelligence (ANI)

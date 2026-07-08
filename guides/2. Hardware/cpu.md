@@ -11,7 +11,7 @@ CPUs are very versatile, as they can do general jobs.
 Since they are general processors, they are also slow at specialised activites such as graphics processing and machine learning which require different instructions and processing models to be executed efficiently.
 
 ## Instructions
-The CPU runs instructions which are loaded from memory ([RAM](/guides/hardware/ram))
+The CPU runs instructions which are loaded from memory ([RAM](ram))
 
 Each instruction is made up of:
 - 'opcode' - the ID of the instruction to run.<br>e.g. `ADD` or `SUB`
@@ -20,10 +20,10 @@ Each instruction is made up of:
 ## Architectures
 The **specific way** that a **CPU** works and the **instructions** available to it are determined by its **architecture**
 
-Programs [compiled](/guides/software/programming/compilers) for one architecture, won't run on another architecture.
+Programs [compiled](compilers) for one architecture, won't run on another architecture.
 
 Common architectures include:
-- ARM64 (aarch64) (Used for most smartphones, many mobile or [embedded devices](/guides/hardware/embedded), and some laptops)
+- ARM64 (aarch64) (Used for most smartphones, many mobile or [embedded devices](embedded), and some laptops)
 - ARMv8-A
 - x86_64 (Used for most desktop and laptop computers)
 - x86

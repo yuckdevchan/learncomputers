@@ -4,7 +4,7 @@ An [**operating system**](https://en.wikipedia.org/wiki/Operating_system) is a p
 
 An **operating system** manages a computer's **hardware devices** and facilitates **running** all other **programs** on the computer.
 
-The **core** component of an **operating system** is the [**kernel**](/guides/software/operating-systems/kernels), which **manages** a computer's **hardware** **through** the use of [**device drivers**](/guides/software/operating-systems/drivers). It is the **only part** of the operating system which can **directly interact** with computer **hardware**.
+The **core** component of an **operating system** is the [**kernel**](kernels), which **manages** a computer's **hardware** **through** the use of [**device drivers**](drivers). It is the **only part** of the operating system which can **directly interact** with computer **hardware**.
 
 ## List of Operating Systems
 ### Desktop

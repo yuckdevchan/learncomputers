@@ -1,2 +1,4 @@
 # Apple Mac
 Apple Mac (or Macintosh) computers are a line of personal computers exclusively designed, manufactured, and sold by Apple Inc.
+
+They run an [OS](whats-an-operating-system) called [macOS](apple-macos).

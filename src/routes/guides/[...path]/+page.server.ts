@@ -10,6 +10,13 @@ interface Heading {
 	level: number;
 }
 
+interface GuideReferenceEntry {
+	routeHref: string;
+	cleanPath: string;
+	basename: string;
+	titleSlug: string;
+}
+
 function headingSlug(text: string): string {
 	return text
 		.toLowerCase()
@@ -60,6 +67,125 @@ function convertDoubleBacktickCodeSpans(content: string): string {
 	});
 }
 
+function escapeHtmlAttribute(value: string): string {
+	return value
+		.replace(/&/g, '&amp;')
+		.replace(/"/g, '&quot;')
+		.replace(/</g, '&lt;')
+		.replace(/>/g, '&gt;');
+}
+
+function slugifyReference(text: string): string {
+	return text
+		.toLowerCase()
+		.replace(/\.[^.\/]+$/, '')
+		.replace(/\s+/g, '-')
+		.replace(/[^a-z0-9/\-]/g, '')
+		.replace(/\/+/g, '/')
+		.replace(/-+/g, '-')
+		.replace(/^-|-$/g, '');
+}
+
+function normalizeReferencePath(href: string): string {
+	let normalized = href.trim().replace(/\\/g, '/');
+
+	try {
+		normalized = decodeURIComponent(normalized);
+	} catch {
+	}
+
+	normalized = normalized
+		.replace(/^\.\/+/, '')
+		.replace(/^\/+/, '')
+		.replace(/^guides\//i, '')
+		.replace(/\.md$/i, '')
+		.replace(/\/+$/, '');
+
+	return slugifyReference(normalized);
+}
+
+function splitReferenceSuffix(href: string): { path: string; suffix: string } {
+	const hashIndex = href.indexOf('#');
+	const queryIndex = href.indexOf('?');
+	let splitIndex = -1;
+
+	if (hashIndex >= 0 && queryIndex >= 0) {
+		splitIndex = Math.min(hashIndex, queryIndex);
+	} else if (hashIndex >= 0) {
+		splitIndex = hashIndex;
+	} else if (queryIndex >= 0) {
+		splitIndex = queryIndex;
+	}
+
+	if (splitIndex === -1) {
+		return { path: href, suffix: '' };
+	}
+
+	return {
+		path: href.slice(0, splitIndex),
+		suffix: href.slice(splitIndex)
+	};
+}
+
+function buildGuideReferenceEntries(nodes: GuideNode[]): GuideReferenceEntry[] {
+	const entries: GuideReferenceEntry[] = [];
+
+	function walk(currentNodes: GuideNode[]) {
+		for (const node of currentNodes) {
+			if (node.children && node.children.length > 0) {
+				walk(node.children);
+				continue;
+			}
+
+			const basename = node.path.split('/').at(-1) || node.path;
+			entries.push({
+				routeHref: `/guides/${node.path}`,
+				cleanPath: normalizeReferencePath(node.path),
+				basename: slugifyReference(basename),
+				titleSlug: slugifyReference(node.title)
+			});
+		}
+	}
+
+	walk(nodes);
+	return entries;
+}
+
+function isExternalHref(href: string): boolean {
+	return /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(href);
+}
+
+function resolveGuideHref(href: string, entries: GuideReferenceEntry[]): string {
+	const trimmed = href.trim();
+	if (!trimmed || trimmed.startsWith('#') || isExternalHref(trimmed)) {
+		return href;
+	}
+
+	const { path, suffix } = splitReferenceSuffix(trimmed);
+	const normalized = normalizeReferencePath(path);
+	if (!normalized) return href;
+
+	const exactMatch = entries.find(
+		(entry) => entry.cleanPath === normalized || entry.basename === normalized || entry.titleSlug === normalized
+	);
+	if (exactMatch) {
+		return `${exactMatch.routeHref}${suffix}`;
+	}
+
+	const partialMatches = entries.filter(
+		(entry) =>
+			entry.cleanPath.endsWith(`/${normalized}`) ||
+			entry.basename.endsWith(normalized) ||
+			entry.titleSlug.endsWith(normalized)
+	);
+
+	if (partialMatches.length === 1) {
+		return `${partialMatches[0].routeHref}${suffix}`;
+	}
+
+	return href;
+}
+
 export async function load({ params }) {
 	const path = params.path || '';
 
@@ -79,7 +205,19 @@ export async function load({ params }) {
 
 	const bodyContent = content.replace(/^#\s+(.+)/m, '').trim();
 	const headings = extractHeadings(bodyContent);
-	const rawHtml = await marked(convertDoubleBacktickCodeSpans(bodyContent));
+	const guideReferenceEntries = buildGuideReferenceEntries(structure);
+	const renderer = new marked.Renderer();
+	renderer.link = ({ href, title, tokens }) => {
+		const resolvedHref = resolveGuideHref(href, guideReferenceEntries);
+		const renderedText = renderer.parser.parseInline(tokens);
+		let html = `<a href="${escapeHtmlAttribute(resolvedHref)}"`;
+		if (title) {
+			html += ` title="${escapeHtmlAttribute(title)}"`;
+		}
+		html += `>${renderedText}</a>`;
+		return html;
+	};
+	const rawHtml = await marked(convertDoubleBacktickCodeSpans(bodyContent), { renderer });
 	const html = addHeadingIds(rawHtml, headings);
 
 	const realPath = getGuideRealPath(path);

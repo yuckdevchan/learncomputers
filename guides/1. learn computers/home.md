@@ -14,12 +14,16 @@ This website was **written** by a **human**.
 
 <span class="underline text-orange-500"><b>Orange links</b> lead to <b>other</b> websites.</span>
 
+(i) Info icons mean a comparison or analogy is being used
+
+(w) Warning icons means there's a common point of confusion
+
 The **coloured** lines in the **sidebar** do not indicate anything.
 
 **Bold text** is used to help your **eyes** read **quicker**.
 
 ## Where to Start?
-Why not start with [Operating Systems](/guides/software/operating-systems/whats-an-operating-system)?
+Why not start with [Operating Systems](whats-an-operating-system)?
 
 ## Disclaimer
 There may be informational errors on this site. If you find one, please leave a bug report [here](https://github.com/yuckdevchan/liteguide/issues).

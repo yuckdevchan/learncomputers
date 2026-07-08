@@ -21,15 +21,15 @@ These [four freedoms](https://www.gnu.org/philosophy/free-sw.html#four-freedoms)
 The Free Software Movement is often associated with the [GNU Project](https://en.wikipedia.org/wiki/GNU_Project) and the [Free Software Foundation](https://en.wikipedia.org/wiki/Free_Software_Foundation), which were founded by [Richard Stallman](https://en.wikipedia.org/wiki/Richard_Stallman) in 1983.
 
 The GNU Project has developed popular libre software such as:
-- [GNU Compiler Collection (GCC)](https://en.wikipedia.org/wiki/GNU_Compiler_Collection) (See [Compilers](/guides/software/programming-languages/compilers))
-- [GNU Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) (See [Shells](/guides/software/programming-languages/shells))
-- [GNU Emacs](https://en.wikipedia.org/wiki/Emacs) (See [Text Editors](/guides/software/programming/text-editors))
-- [GNU Core Utilities](https://en.wikipedia.org/wiki/GNU_Core_Utilities) (These are used in almost all [Linux](/guides/software/operating-systems/unix-style/linux) distributions)
+- [GNU Compiler Collection (GCC)](https://en.wikipedia.org/wiki/GNU_Compiler_Collection) (See [Compilers](compilers))
+- [GNU Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) (See [Shells](shells))
+- [GNU Emacs](https://en.wikipedia.org/wiki/Emacs) (See [Text Editors](text-editors))
+- [GNU Core Utilities](https://en.wikipedia.org/wiki/GNU_Core_Utilities) (These are used in almost all [Linux](linux) distributions)
 - [GNU Debugger (GDB)](https://en.wikipedia.org/wiki/GNU_Debugger)
-- [GNU Make](https://en.wikipedia.org/wiki/GNU_Make) (See [Build Systems](/guides/software/programming-languages/build-systems))
+- [GNU Make](https://en.wikipedia.org/wiki/GNU_Make) (See [Build Systems](build-systems))
 - [GNU Octave](https://en.wikipedia.org/wiki/GNU_Octave)
-- [GNU Privacy Guard (GPG)](https://en.wikipedia.org/wiki/GNU_Privacy_Guard) (See [Encryption](/guides/software/programming-languages/encryption))
-- [GIMP](https://en.wikipedia.org/wiki/GIMP) (See [Image Manipulation](/guides/software/multimedia/images))
+- [GNU Privacy Guard (GPG)](https://en.wikipedia.org/wiki/GNU_Privacy_Guard) (See [Encryption](encryption))
+- [GIMP](https://en.wikipedia.org/wiki/GIMP) (See [Image Manipulation](images))
 
 ## Related Guides
-- [Open-Source & Copyleft](/guides/ethics-law/open-source-and-copyleft)
+- [Open-Source & Copyleft](open-source-and-copyleft)

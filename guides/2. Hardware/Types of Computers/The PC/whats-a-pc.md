@@ -6,7 +6,7 @@ This guide **assumes** the **colloquial defintion** of a **PC**.
 
 The **PC** is a **standard type of computer**. PCs **usually use** components which are **compatible** with **other PCs** (with **limitations**). For example, if you had **two PCs** you **may be able** to **swap some of their parts** and still have **both work**.
 
-Almost all **laptops** which use [Windows](/guides/Software/Operating%20Systems/Other/microsoft-windows) or [Linux](https://en.wikipedia.org/wiki/Linux) are PCs.
+Almost all **laptops** which use [Windows](microsoft-windows) or [Linux](https://en.wikipedia.org/wiki/Linux) are PCs.
 
 [Apple Mac computers](https://en.wikipedia.org/wiki/Mac_(computer)) are **not PCs**, because although today they use **similar components** to PCs, they are **not desigend** to be **compatible** with other PCs and often **feature proprietary** hardware and software **mechanisms** to **prevent part-swapping** and **intercompatibility** with PC parts.
 
@@ -23,4 +23,4 @@ PCs **usually** consist of the following parts **separately**, but some PCs have
 
 \* commonly built into **motherboard**
 
-\*\* commonly built into **primary chip**, alongside the **CPU** on [SOC](/guides/hardware/soc) computers
+\*\* commonly built into **primary chip**, alongside the **CPU** on [SOC](soc) computers
