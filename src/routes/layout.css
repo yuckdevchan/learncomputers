@@ -154,6 +154,15 @@
 	code {
 		word-break: break-word;
 	}
+
+	h2 {
+		margin-top: 1.4rem;
+		margin-bottom: 0.45rem;
+	}
+
+	p {
+		margin-bottom: 1rem;
+	}
 }
 
 a {
@@ -165,5 +174,21 @@ a {
 
 	&[href^='http']:not([href*='wikipedia.org']) {
 		color: var(--color-orange-500) !important;
+	}
+}
+
+.i,
+.e,
+.w {
+	background-color: var(--color-neutral-900);
+	padding-left: 0.7rem;
+	padding-right: 0.7rem;
+	padding-top: 0.7rem;
+	padding-bottom: 0.7rem;
+	border-radius: 0.6rem;
+	margin-bottom: 0.65rem;
+
+	p {
+		margin: 0;
 	}
 }

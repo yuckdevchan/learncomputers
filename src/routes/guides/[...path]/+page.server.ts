@@ -67,6 +67,19 @@ function convertDoubleBacktickCodeSpans(content: string): string {
 	});
 }
 
+function wrapIconParagraphs(html: string): string {
+	return html.replace(
+		/<p>(\s*\([iwe]\)[\s\S]*?)<\/p>/gi,
+		(match) => {
+			const icon = match.match(/\(([iwe])\)/i)?.[1]?.toLowerCase();
+			if (icon) {
+				return `<div class="${icon}">${match}</div>`;
+			}
+			return match;
+		}
+	);
+}
+
 function escapeHtmlAttribute(value: string): string {
 	return value
 		.replace(/&/g, '&amp;')
@@ -155,6 +168,21 @@ function isExternalHref(href: string): boolean {
 	return /^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(href);
 }
 
+function normalizeWikipediaPath(href: string): string {
+	let normalized = href.trim().replace(/\\/g, '/');
+	try {
+		normalized = decodeURIComponent(normalized);
+	} catch {
+	}
+	normalized = normalized
+		.replace(/^\.\/+/, '')
+		.replace(/^\/+/, '')
+		.replace(/^guides\//i, '')
+		.replace(/\.md$/i, '')
+		.replace(/\/+$/, '');
+	return normalized.replace(/\s+/g, '_').replace(/-/g, '_');
+}
+
 function resolveGuideHref(href: string, entries: GuideReferenceEntry[]): string {
 	const trimmed = href.trim();
 	if (!trimmed || trimmed.startsWith('#') || isExternalHref(trimmed)) {
@@ -183,7 +211,7 @@ function resolveGuideHref(href: string, entries: GuideReferenceEntry[]): string 
 		return `${partialMatches[0].routeHref}${suffix}`;
 	}
 
-	return `https://en.wikipedia.org/wiki/${normalized.replace(/_/g, '-')}${suffix}`;
+	return `https://en.wikipedia.org/wiki/${normalizeWikipediaPath(path)}${suffix}`;
 }
 
 export async function load({ params }) {
@@ -221,7 +249,7 @@ export async function load({ params }) {
 		return html;
 	};
 	const rawHtml = await marked(convertDoubleBacktickCodeSpans(bodyContent), { renderer });
-	const html = addHeadingIds(rawHtml, headings);
+	const html = addHeadingIds(wrapIconParagraphs(rawHtml), headings);
 
 	const realPath = getGuideRealPath(path);
 	const sourceUrl = `${GITHUB_EDIT_BASE}/${realPath || path}.md`;
