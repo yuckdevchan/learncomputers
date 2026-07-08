@@ -53,6 +53,13 @@ function addHeadingIds(html: string, headings: Heading[]): string {
 	});
 }
 
+function convertDoubleBacktickCodeSpans(content: string): string {
+	return content.replace(/```[\s\S]*?```|([^`]|^)``([^`\n]+?)``/g, (match, prefix, code) => {
+		if (match.startsWith('```')) return match;
+		return `${prefix}<code>${code}</code>`;
+	});
+}
+
 export async function load({ params }) {
 	const path = params.path || '';
 
@@ -72,7 +79,7 @@ export async function load({ params }) {
 
 	const bodyContent = content.replace(/^#\s+(.+)/m, '').trim();
 	const headings = extractHeadings(bodyContent);
-	const rawHtml = await marked(bodyContent);
+	const rawHtml = await marked(convertDoubleBacktickCodeSpans(bodyContent));
 	const html = addHeadingIds(rawHtml, headings);
 
 	const realPath = getGuideRealPath(path);

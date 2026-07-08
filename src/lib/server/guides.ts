@@ -38,10 +38,12 @@ function sortOrderFromContent(content: string): number | null {
 	return null;
 }
 
-type RawNode = GuideNode & { order?: number | null };
+type NodeKind = 'article' | 'category';
+
+type RawNode = GuideNode & { order?: number | null; kind: NodeKind };
 
 function stripOrder(n: RawNode): GuideNode {
-	const { order: _, ...rest } = n;
+	const { order: _, kind: __, ...rest } = n;
 	return rest;
 }
 
@@ -65,6 +67,7 @@ function readTree(dir: string, cleanBase: string, realBase: string): RawNode[] {
 				slug: slugged,
 				path: cleanPath,
 				order,
+				kind: 'category',
 				children: children.map(stripOrder)
 			});
 		}
@@ -81,11 +84,13 @@ function readTree(dir: string, cleanBase: string, realBase: string): RawNode[] {
 			title: titleFromContent(content, slug),
 			slug,
 			path: cleanPath,
-			order: sortOrderFromContent(content)
+			order: sortOrderFromContent(content),
+			kind: 'article'
 		});
 	}
 
 	rawNodes.sort((a, b) => {
+		if (a.kind !== b.kind) return a.kind === 'article' ? -1 : 1;
 		if (a.order != null && b.order != null) return a.order - b.order;
 		if (a.order != null) return -1;
 		if (b.order != null) return 1;
