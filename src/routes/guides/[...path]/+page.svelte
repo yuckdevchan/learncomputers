@@ -61,13 +61,13 @@
 					<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
 						{data.title}
 					</h1>
-					<div class="flex gap-3 items-center w-full *:flex-1">
+					<div class="flex gap-2 md:gap-1 items-center w-full *:flex-1 md:w-auto">
 						<Button
 							variant="outline"
-							class="rounded-full"
+							class="rounded-full md:bg-transparent! md:border-none!"
 							onclick={() => {
 								toast.success('Copied to clipboard!');
-							}}><Copy class="h-4 w-4" />Copy</Button
+							}}><Copy class="h-4 w-4" /><span class="md:hidden">Copy</span></Button
 						>
 						<Button variant="outline" class="rounded-full" href={data.sourceUrl} target="_blank"
 							><Pencil class="h-4 w-4" />edit this page</Button

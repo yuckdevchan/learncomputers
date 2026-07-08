@@ -183,7 +183,7 @@ function normalizeWikipediaPath(href: string): string {
 	return normalized.replace(/\s+/g, '_').replace(/-/g, '_');
 }
 
-function resolveGuideHref(href: string, entries: GuideReferenceEntry[]): string {
+function resolveGuideHref(href: string, entries: GuideReferenceEntry[], currentPath: string): string {
 	const trimmed = href.trim();
 	if (!trimmed || trimmed.startsWith('#') || isExternalHref(trimmed)) {
 		return href;
@@ -196,15 +196,16 @@ function resolveGuideHref(href: string, entries: GuideReferenceEntry[]): string 
 	const exactMatch = entries.find(
 		(entry) => entry.cleanPath === normalized || entry.basename === normalized || entry.titleSlug === normalized
 	);
-	if (exactMatch) {
+	if (exactMatch && exactMatch.cleanPath !== currentPath) {
 		return `${exactMatch.routeHref}${suffix}`;
 	}
 
 	const partialMatches = entries.filter(
 		(entry) =>
-			entry.cleanPath.endsWith(`/${normalized}`) ||
-			entry.basename.endsWith(normalized) ||
-			entry.titleSlug.endsWith(normalized)
+			entry.cleanPath !== currentPath &&
+			(entry.cleanPath.endsWith(`/${normalized}`) ||
+				entry.basename.endsWith(normalized) ||
+				entry.titleSlug.endsWith(normalized))
 	);
 
 	if (partialMatches.length === 1) {
@@ -216,6 +217,7 @@ function resolveGuideHref(href: string, entries: GuideReferenceEntry[]): string 
 
 export async function load({ params }) {
 	const path = params.path || '';
+	const currentPath = normalizeReferencePath(path);
 
 	const structure = getGuideStructure();
 
@@ -236,7 +238,7 @@ export async function load({ params }) {
 	const guideReferenceEntries = buildGuideReferenceEntries(structure);
 	const renderer = new marked.Renderer();
 	renderer.link = ({ href, title, tokens }) => {
-		const resolvedHref = resolveGuideHref(href, guideReferenceEntries);
+		const resolvedHref = resolveGuideHref(href, guideReferenceEntries, currentPath);
 		const renderedText = renderer.parser.parseInline(tokens);
 		let html = `<a href="${escapeHtmlAttribute(resolvedHref)}"`;
 		if (resolvedHref.startsWith('http')) {
