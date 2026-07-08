@@ -5,7 +5,7 @@
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import { useSidebar } from '$lib/components/ui/sidebar/context.svelte.js';
 	import GalleryVerticalEndIcon from '@lucide/svelte/icons/gallery-vertical-end';
-	import GithubIcon from '@lucide/svelte/icons/github';
+	import FolderGit2 from '@lucide/svelte/icons/folder-git-2';
 	import SearchIcon from '@lucide/svelte/icons/search';
 	import type { ComponentProps } from 'svelte';
 
@@ -131,7 +131,7 @@
 							rel="noreferrer"
 							{...props}
 						>
-							<GithubIcon class="size-4 mr-2 text-white!" />
+							<FolderGit2 class="size-4 mr-2 text-white!" />
 							<span class="text-white!">Source Code</span>
 						</a>
 					{/snippet}
@@ -139,6 +139,7 @@
 			</Sidebar.MenuItem>
 		</Sidebar.Menu>
 	</Sidebar.Header>
+	<hr />
 	<Sidebar.Content class="flex flex-col overflow-hidden">
 		<Sidebar.Group class="relative flex-1 overflow-y-auto">
 			<Sidebar.Menu>

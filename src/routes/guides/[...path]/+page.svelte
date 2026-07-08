@@ -5,6 +5,7 @@
 	import { Separator } from '$lib/components/ui/separator/index.js';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import { Button } from '$lib/components/ui/button/index.js';
+	import { toast } from 'svelte-sonner';
 	import Pencil from '@lucide/svelte/icons/pencil';
 	import Copy from '@lucide/svelte/icons/copy';
 
@@ -56,14 +57,18 @@
 		</header>
 		<div class="flex flex-1 gap-4 p-4">
 			<div class="mx-auto w-full min-w-0 max-w-4xl gap-3 flex flex-col">
-				<div class="flex justify-between gap-4 flex-row items-center">
+				<div class="flex justify-between gap-4 flex-row items-center flex-wrap">
 					<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
 						{data.title}
 					</h1>
-					<div class="flex gap-3 items-center">
-						<Button variant="ghost" class="rounded-full">
-							<Copy class="h-4 w-4" />
-						</Button>
+					<div class="flex gap-3 items-center w-full *:flex-1">
+						<Button
+							variant="outline"
+							class="rounded-full"
+							onclick={() => {
+								toast.success('Copied to clipboard!');
+							}}><Copy class="h-4 w-4" />Copy</Button
+						>
 						<Button variant="outline" class="rounded-full" href={data.sourceUrl} target="_blank"
 							><Pencil class="h-4 w-4" />edit this page</Button
 						>
