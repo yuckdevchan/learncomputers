@@ -9,5 +9,23 @@
 <ModeWatcher />
 <Toaster />
 
-<svelte:head><link rel="icon" href="/favicon.svg" /></svelte:head>
+<svelte:head
+	><link rel="icon" href="/favicon.svg" />
+	<title>liteguide</title>
+	<meta name="color-scheme" content="dark light" />
+	<meta name="title" content="liteguide" />
+	<meta name="description" content="LEARN EVERYTHING ABT COMPUTERS SUPER FAST + FUN" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://liteguide.vercel.app/" />
+	<meta property="og:title" content="liteguide" />
+	<meta property="og:description" content="LEARN EVERYTHING ABT COMPUTERS SUPER FAST + FUN" />
+	<meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content="https://liteguide.vercel.app/" />
+	<meta property="twitter:title" content="liteguide" />
+	<meta property="twitter:description" content="LEARN EVERYTHING ABT COMPUTERS SUPER FAST + FUN" />
+	<meta property="twitter:image" content="https://metatags.io/images/meta-tags.png" />
+</svelte:head>
 {@render children()}
