@@ -3,6 +3,12 @@
 - **Guides** should be **short**, **informative**, and **not** get into **unecessary details**, mostly they should **give enough information** so that the **topic makes sense** in the **context of** everything else in **the computer world**.
 - **Words** should **often be bolded** to **help guide** the **reader's eye**, allowing them to **read quickly** and extract **important information**.
 
+To make **info**, **warning**, or **extra information** boxes, use a w in **brackets** for **warning**, an i in **brackets** for **info** and an e in **brackets** for **extra information**. This **needs** to go at the **start of a paragraph**. **Newlines** are **allowed** in these **boxes** and can be done by **inserting** an **HTML break tag**: `<br>`.
+
+(w) **Warning boxes** are **most commonly** used to **address naming controversies**, and **common confusions**.
+
+(e) **Extra information boxes** are used for **side-tangents**, **fun-facts** and **extra information** which isn't **strictly necessary**.
+
 ## Special Markdown Syntax
 ## Links
 All **Terms** should be **linked**. The **linking system** works as **follows**: if you **link** like this in **markdown**:
