@@ -50,5 +50,5 @@ e.g.
 ```markdown
 2
 # GPU
-[GPU](https://en.wikipedia.org/wiki/Graphics_processing_unit) stands for **Graphics Processing Unit**.
+[GPU](graphics-processing-units) stands for **Graphics Processing Unit**.
 ```
