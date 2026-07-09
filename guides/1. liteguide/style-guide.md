@@ -1,4 +1,6 @@
 # Style Guide & Philosophy
+This **page** is **intended** for **potential contributors** to <span class="font-mono">**liteguide**</span>.
+
 **Main** points:
 - **Guides** should be **short**, **informative**, and **not** get into **unecessary details**, mostly they should **give enough information** so that the **topic makes sense** in the **context of** everything else in **the computer world**.
 - **Words** should **often be bolded** to **help guide** the **reader's eye**, allowing them to **read quickly** and extract **important information**.
