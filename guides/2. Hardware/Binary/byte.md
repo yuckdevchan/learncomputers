@@ -25,4 +25,4 @@ The **metric units** are more commonly used in **marketing**, while the **binary
 
 **These lists** continue with **petabytes**, **exabytes**, and **zettabytes**, but these are more rarely used because they are **so huge**.
 
-(e) **Google** is **estimated** to store over **15 exabytes** of data, and the **entire internet** is **estimated** to be over **40 zettabytes** of data.
+(e) **Google** is **estimated** to store over **15 exabytes** (or **15,000 gigabytes**) of data, and the **entire internet** is **estimated** to be over **40 zettabytes** of data.
