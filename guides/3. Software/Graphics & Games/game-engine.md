@@ -5,6 +5,8 @@ Using a **game engine** can **save time** and **effort** for developers, as they
 
 **Game engines** often include a [graphics library](graphics-libraries-and-apis), a [physics engine](physics-engine), a [sound engine](sound-engine), and other **tools** to help **developers** make **video games**.
 
+(w) The first **game engine** is widely believed to be the **id Tech 1 engine**, which was used to make the **video game** [Doom](doom) in 1993, a **landmark title** in terms of technical **achievement** and **popularity**.
+
 Some **game engines** are for **3D**, **2D**, and some are **for both**.
 
 Some **game engines** including [Unity](unity) include a [GUI](gui) **editor application**, others are a [code library](library) **only**.
