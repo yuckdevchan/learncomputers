@@ -1,7 +1,20 @@
 # HDD
 **HDD** stands for [Hard Disk Drive](Hard-disk-drive).
 
+An **HDD** is a **data storage device** which stores **digital information** (almost always in [binary](binary))
+
+**Data** is stored as **polarity** on a **magnetically sensitive surface**.
+
 (w) **HDD** can **also be referred** to as a *hard drive* or **hard disk**. Sometimes **other storage drives** such as [SSDs](ssd) are **mistakenly referred** to as **hard drives**.
+
+## Pros
+- **Costs less** per giga[byte](byte) **than other** [SSDs](ssd) and [optical media](optical-media) **storage**.
+
+## Cons
+- **Slower** than [SSDs](ssd) due to **mechanical parts**.
+- **More prone to failure** due to **moving parts**.
+- **Less durable** than [SSDs](ssd) because of **moving parts**
+- **Less suitable** for [mobile devices](mobile) due to **moving parts**.
 
 ## How it works
 A **hard drive** consists of **one or more platters** that are **coated** with a **magnetic material**. **Data is stored** on these **platters** in the form of **tiny magnetic regions**, which can be **magnetized** in **different directions** to represent **binary data** (0s and 1s).

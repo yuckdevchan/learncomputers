@@ -29,6 +29,8 @@ It **works** like this so if **an article** doesn't exist then it **links to wik
 
 **Links** should **not** be **bolded** or *italicized*.
 
+**Only** the **first mention** of a **term** should be **linked**.
+
 ## Sort order
 **Sort order** is **optional**.
 
@@ -52,3 +54,15 @@ e.g.
 # GPU
 [GPU](graphics-processing-units) stands for **Graphics Processing Unit**.
 ```
+
+## Guide Structure
+**Guide titles** should **almost always** be **singular**.
+
+If a **guide** is about something with **an acronym**, the **acronym** should usually be **used as the title**, unless it is **more commonly known** by its **full name**. In the case where the title is an acronym, the first **contentful line** of the **guide** should **always** say what is **stands for** like **this**:
+
+```markdown
+# CPU
+[cpu](cpu) stands for **Central Processing Unit**.
+```
+
+The **first line** should always be **a short definition** or **categorisation** of the **topic**. In the **first line** the **name of the topic** should be **mentioned** (can be **plural**) The **name** should be **hyperlinked**.
