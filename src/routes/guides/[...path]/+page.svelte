@@ -78,7 +78,7 @@
 					{@html html}
 				</div>
 				<span class="text-zinc-600 font-bold"
-					><a href="https://github.com/yuckdevchan/liteguide/blob/main/LICENSE">License: GPLv3</a
+					><a href="https://github.com/yuckdevchan/liteguide/blob/main/LICENSE" target="_blank">License: GPLv3</a
 					></span
 				>
 			</div>

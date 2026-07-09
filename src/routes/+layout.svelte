@@ -15,11 +15,12 @@
 	<meta name="color-scheme" content="dark light" />
 	<meta name="title" content="liteguide" />
 	<meta name="description" content="LEARN EVERYTHING ABT COMPUTERS SUPER FAST + FUN" />
-
+	
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://liteguide.vercel.app/" />
 	<meta property="og:title" content="liteguide" />
 	<meta property="og:description" content="LEARN EVERYTHING ABT COMPUTERS SUPER FAST + FUN" />
+	<meta property="og:image" content="/banner.png" />
 
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content="https://liteguide.vercel.app/" />

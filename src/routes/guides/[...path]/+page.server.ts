@@ -1,5 +1,6 @@
 import { error } from '@sveltejs/kit';
 import { getGuideContent, getGuideStructure, getGuideRealPath, type GuideNode } from '$lib/server/guides';
+import hljs from 'highlight.js';
 import { marked } from 'marked';
 
 const GITHUB_EDIT_BASE = 'https://github.com/yuckdevchan/liteguide/edit/main/guides';
@@ -86,6 +87,29 @@ function escapeHtmlAttribute(value: string): string {
 		.replace(/"/g, '&quot;')
 		.replace(/</g, '&lt;')
 		.replace(/>/g, '&gt;');
+}
+
+function escapeHtml(value: string): string {
+	return escapeHtmlAttribute(value).replace(/'/g, '&#39;');
+}
+
+function normalizeCodeLanguage(lang?: string): string {
+	return (lang || '').trim().toLowerCase().split(/\s+/)[0] || '';
+}
+
+function renderCodeBlock(code: string, lang?: string): string {
+	const normalizedLanguage = normalizeCodeLanguage(lang);
+	const highlighted = normalizedLanguage && hljs.getLanguage(normalizedLanguage)
+		? hljs.highlight(code, { language: normalizedLanguage, ignoreIllegals: true }).value
+		: hljs.highlightAuto(code).value;
+	const label = normalizedLanguage || hljs.highlightAuto(code).language || 'text';
+
+	return `
+		<figure class="code-block">
+			<figcaption class="code-block__language">${escapeHtml(label)}</figcaption>
+			<pre><code class="hljs${normalizedLanguage ? ` language-${escapeHtmlAttribute(normalizedLanguage)}` : ''}">${highlighted}</code></pre>
+		</figure>
+	`;
 }
 
 function slugifyReference(text: string): string {
@@ -237,6 +261,7 @@ export async function load({ params }) {
 	const headings = extractHeadings(bodyContent);
 	const guideReferenceEntries = buildGuideReferenceEntries(structure);
 	const renderer = new marked.Renderer();
+	renderer.code = ({ text, lang }) => renderCodeBlock(text, lang);
 	renderer.link = ({ href, title, tokens }) => {
 		const resolvedHref = resolveGuideHref(href, guideReferenceEntries, currentPath);
 		const renderedText = renderer.parser.parseInline(tokens);

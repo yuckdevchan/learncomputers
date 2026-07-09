@@ -6,13 +6,7 @@ There is no single operating system called 'Linux'. Instead, there are many [dis
 (w) Almost all Linux distros use the GNU core utilities, which is why the term 'GNU/Linux' is often used instead of just 'Linux'. See: [Linux naming controversy](https://en.wikipedia.org/wiki/GNU/Linux_naming_controversy).
 
 ## Packages
-On Linux, software applications or programs are called packages. They can be installed using a package manager.
-
-(e) Using a package manager to download form a repository (or repo) is like using an app store.
-
-A package manager can be [CLI](cli) or [GUI](gui), or both.
-
-When a user requests a package through their package manager, an online, centralised repository of software will return the compressed package, which can then be installed onto the computer.
+On Linux, software applications or programs are called packages. They can be installed using a [package manager](package-manager).
 
 ## Popular Linux Distros
 - [Ubuntu](https://en.wikipedia.org/wiki/Ubuntu)

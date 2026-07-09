@@ -9,7 +9,7 @@
 
 **GPUs** are also **used for** [machine learning](machine-learning) and [LLMs](llm) because they **also work** by calculating **matrix transformations**.
 
-(e) The **GPU** company [NVIDIA](NVIDIA) became the **most valuable** in the world **in 2025** because their **GPU technology** could be used to **train** and run **LLMs**.
+(e) The **GPU** company [NVIDIA](NVIDIA) became the **most valuable** in the world **in 2025** because their **GPU technology** can be used to **train** and run **LLMs**.
 
 ## Ways to include a GPU in a computer
 **GPU chips** can be **directly built** into, or **mounted to** the [motherboard](motherboard).

@@ -12,4 +12,4 @@ The **platters spin** at **high speeds**, allowing the **read/write head** to ac
 
 The **read/write** head can also **write data** by **changing** the **magnetic orientation** of the **regions** on the **platters**.
 
-(i) Because **HDDs** are **magnetic storage**, if you **touch a magnet** to the **platter**, it will **erase the data** stored on the **disk**.
+(e) Because **HDDs** are **magnetic storage**, if you **touch a magnet** to the **platter**, it will **erase the data** stored on the **disk**.
